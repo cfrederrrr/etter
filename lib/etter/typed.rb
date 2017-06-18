@@ -13,6 +13,8 @@ require_relative "etter"
 # (+include+ will work... but it doesn't really do you any good)
 module Etter::Typed
 
+  protected
+
   # This method is not very different from +attr_reader+, but is
   # provided because in the future, it may do something such as
   # taint the returned object if it does not match the specified
@@ -33,7 +35,7 @@ module Etter::Typed
   #   :public
   #   :protected
   #   :private
-  def getter(name, type: Object, scope: :public)
+  def getter(name, type: Object, scope: :public) # :doc:
     define_method(name.to_getter) do
       get_attr name
     end
@@ -65,7 +67,7 @@ module Etter::Typed
   #   :protected
   #   :private
   #
-  def setter(name, type: Object, scope: :public)
+  def setter(name, type: Object, scope: :public) # :doc:
     define_method(name.to_setter) do |value|
       raise TypeError, "#{name.to_attr} must be a #{type}" unless
         value.is_a? type
@@ -93,7 +95,7 @@ module Etter::Typed
   # Like +attr_accessor+ , but encompasses the properties mentioned
   # in +setter+ and +getter+
   #
-  def property(name, type: Object, scope: :public)
+  def property(name, type: Object, scope: :public) # :doc:
     getter name,
       type: type,
       scope: scope

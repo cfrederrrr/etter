@@ -2,7 +2,6 @@
 Extension to any `Class`, providing simple, easy methods for accessing dynamic
 attributes.
 
-
 ## Features
 + Introduces type restriction on attributes during assignment,
 preventing unexpected type-weirdness from cropping up when it comes time for
